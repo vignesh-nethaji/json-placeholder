@@ -1,3 +1,3 @@
-Step 2  
-    1. Added React DOM Router
-    2. Added Simple layout and pages.
+Step 3 - First JSON Placeholder API Test
+    1. npm install axios
+    2. Access 10 post and render in Home Page
