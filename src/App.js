@@ -1,26 +1,40 @@
-// import logo from './logo.svg';
-import './App.css';
-// import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
-import Contact from "./pages/Contact";
-import NoPage from "./pages/NoPage";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  defer
+} from "react-router-dom";
+import { LoginPage, HomePage, ProfilePage, SettingsPage } from "./pages";
+import { ProtectedLayout } from "./components/ProtectedLayout";
+import { HomeLayout } from "./components/HomeLayout";
+import "./styles.css";
+import { AuthLayout } from "./components/AuthLayout";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+// ideally this would be an API call to server to get logged in user data
+
+const getUserData = () =>
+  new Promise((resolve, reject) =>
+    setTimeout(() => {
+      const user = window.localStorage.getItem("user");
+      resolve(user);
+    }, 3000)
   );
-}
 
-export default App;
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      element={<AuthLayout />}
+      loader={() => defer({ userPromise: getUserData() })}
+    >
+      <Route element={<HomeLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Route>
+
+      <Route path="/dashboard" element={<ProtectedLayout />}>
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="settings" element={<SettingsPage />} />
+      </Route>
+    </Route>
+  )
+);

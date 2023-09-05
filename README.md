@@ -1,3 +1,3 @@
-# Step 3 - First JSON Placeholder API Test
-    1. npm install axios
-    2. Access 10 post from api and render in Home Page
+# Step 4 - Routing
+    1. Configure Route with Authentication
+    2. Implemented multiple layout
