@@ -1,3 +1,2 @@
-# Step 4 - Routing
-    1. Configure Route with Authentication
-    2. Implemented multiple layout
+# Step 5 - Landing Page
+    1. Create new landing page under pages
