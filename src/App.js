@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
   defer
 } from "react-router-dom";
-import { LoginPage, HomePage, ProfilePage, SettingsPage } from "./pages";
+import { LoginPage, HomePage, ProfilePage, SettingsPage, LandingPage } from "./pages";
 import { ProtectedLayout } from "./components/ProtectedLayout";
 import { HomeLayout } from "./components/HomeLayout";
 import "./styles.css";
@@ -27,7 +27,8 @@ export const router = createBrowserRouter(
       loader={() => defer({ userPromise: getUserData() })}
     >
       <Route element={<HomeLayout />}>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/Home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
       </Route>
 

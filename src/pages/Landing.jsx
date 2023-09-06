@@ -1,6 +1,6 @@
 import { BasicPage } from "../components";
-import Home from "@mui/icons-material/Home";
+import Diversity2Icon from '@mui/icons-material/Diversity2';
 
 export const LandingPage = () => {
-    return <BasicPage title="Landing Page" icon={<Home />} />;
+    return <BasicPage title="Landing Page" icon={<Diversity2Icon />} />;
 };

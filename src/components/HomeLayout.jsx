@@ -14,7 +14,8 @@ export const HomeLayout = () => {
         <div>
             <AppBar
                 pages={[
-                    { label: "Home", path: "/" },
+                    { label: "Landing", path: "/" },
+                    { label: "Home", path: "/home" },
                     { label: "Login", path: "/login" }
                 ]}
             />
